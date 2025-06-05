@@ -26,7 +26,7 @@
     }
 
     .news-image {
-      position: relative; /* necesario para el overlay */
+      position: relative;
       flex: 1 1 400px;
       max-width: 500px;
       cursor: pointer;
@@ -39,7 +39,6 @@
       display: block;
     }
 
-    /* Overlay de carga para la imagen */
     .loading-overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -102,9 +101,25 @@
   </style>
 </head>
 <body>
+
+  <!-- RECUADRO DE JUNIO -->
+  <div class="container">
+    <a href="junio.html" class="news-image">
+      <img src="parche-junio.png" alt="Patch Notes Junio" />
+      <div class="loading-overlay">Cargando...</div>
+    </a>
+    <div class="news-content">
+      <div class="date">PRIMERA SEMANA DE JUNIO</div>
+      <h2>Actualización Personalizable - Mes de Junio, 2025</h2>
+      <p>En este mes de Junio, introducimos contenido personalizable que permitirá a los usuarios modificar ciertos aspectos del juego a su gusto, abriendo las puertas a una experiencia más inmersiva.</p>
+      <a href="junio.html" class="read-more">Leer notas del parche</a>
+    </div>
+  </div>
+
+  <!-- RECUADRO DE MAYO -->
   <div class="container">
     <a href="parche.html" class="news-image">
-      <img src="parche-finalmayo.png" alt="Patch Notes" />
+      <img src="parche-finalmayo.png" alt="Patch Notes Mayo" />
       <div class="loading-overlay">Cargando...</div>
     </a>
     <div class="news-content">
@@ -140,5 +155,6 @@
       link.addEventListener('click', handleDelayedRedirect);
     });
   </script>
+
 </body>
 </html>
