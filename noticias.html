@@ -89,6 +89,8 @@
       text-decoration: underline;
       cursor: pointer;
       width: fit-content;
+      display: inline-flex;
+      align-items: center;
     }
 
     .read-more:hover {
@@ -97,6 +99,25 @@
 
     a {
       text-decoration: none;
+    }
+
+    /* Spinner estilo */
+    .spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 3px solid #b69200;
+      border-top: 3px solid transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
@@ -131,33 +152,33 @@
   </div>
 
   <script>
-  document.querySelectorAll('.news-image, .read-more').forEach(link => {
-    link.addEventListener('click', function (event) {
-      event.preventDefault();
-      const href = this.getAttribute('href');
+    document.querySelectorAll('.news-image, .read-more').forEach(link => {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        const href = this.getAttribute('href');
 
-      // Efecto visual si es una imagen
-      if (this.classList.contains('news-image')) {
-        const overlay = this.querySelector('.loading-overlay');
-        if (overlay) {
-          overlay.classList.add('active');
+        // Imagen: overlay visible
+        if (this.classList.contains('news-image')) {
+          const overlay = this.querySelector('.loading-overlay');
+          if (overlay) {
+            overlay.classList.add('active');
+          }
         }
-      }
 
-      // Efecto visual si es "Leer más"
-      if (this.classList.contains('read-more')) {
-        this.textContent = 'Cargando...';
-        this.style.pointerEvents = 'none';
-        this.style.opacity = '0.6';
-      }
+        // Leer más: texto + spinner
+        if (this.classList.contains('read-more')) {
+          this.innerHTML = 'Cargando... <span class="spinner"></span>';
+          this.style.pointerEvents = 'none';
+          this.style.opacity = '0.7';
+        }
 
-      // Redirección con retraso
-      setTimeout(() => {
-        window.location.href = href;
-      }, 2000);
+        // Redirigir tras 2 segundos
+        setTimeout(() => {
+          window.location.href = href;
+        }, 2000);
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
